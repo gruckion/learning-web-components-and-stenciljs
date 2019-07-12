@@ -15,7 +15,7 @@ class Tooltip extends HTMLElement {
         // this.shadowRoot.appendChild(template.content.cloneNode(true));
 
         this.shadowRoot.innerHTML = `
-            <slot></slot>
+            <slot>Default slot text</slot>
             <span>
                 (?)
             </span>`;

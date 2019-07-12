@@ -50,7 +50,7 @@ The draw backs of this approach is that we no longer have a self contained web c
 
 # Template slots
 
-We can add our text within the component back by using templates slots. The `<slot></slot>` element allows as to mark the location within our template where the inner conent of our web component should be place.
+We can add our text within the component back by using templates slots. The `<slot></slot>` element allows as to mark the location within our template where the inner conent of our web component should be place. We can also set the default text within our slot, this is done by setting the value within the `<slot>` element. Now if our `<sr-tooltip>` does not have any inner content then it will render the default slot value.
 
 # Defining Templates within the web component
 
