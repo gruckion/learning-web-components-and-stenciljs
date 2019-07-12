@@ -79,3 +79,7 @@ We can style our element using `sr-tooltip {}` but if we want to have a default 
 If you want to conditionally apply default styling we can not use `:host.white {}` for example. We need to treat `:host()` as a function which takes in the additional class's as parameters. `:host(.red){}`
 
 If we want to conditionally style based on the parent element that our web component is placed withhin, then we must use the `:host-contxt(p) {}` selector. Here this will only apply to a parent container that is a paragraph.
+
+## Styling with css variables
+
+We can also specify the default style to be the value of css variables. These can be set in the light down allowing consumers to override the default styling.

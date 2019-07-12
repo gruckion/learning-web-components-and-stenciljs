@@ -26,7 +26,7 @@ class Tooltip extends HTMLElement {
                     background-color: red;
                 }
                 :host {
-                    background-color: grey;
+                    background-color: var(--primary-color);
                 }
                 :host(.red) {
                     background-color: red;
