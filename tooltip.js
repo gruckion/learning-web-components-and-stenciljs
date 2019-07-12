@@ -6,6 +6,7 @@ class Tooltip extends HTMLElement {
         console.log("Created Tooltip element.");
         this._tooltipContainer;
         this._tooltipText = "This is the default text if not set";
+        this.attachShadow({ mode: "open" });
     }
 
     connectedCallback() {
@@ -17,7 +18,7 @@ class Tooltip extends HTMLElement {
 
         tooltipIcon.addEventListener("mouseenter", this._showTooltiop.bind(this));
         tooltipIcon.addEventListener("mouseleave", this._hideTooltiop.bind(this));
-        this.appendChild(tooltipIcon);
+        this.shadowRoot.appendChild(tooltipIcon);
         this.style.position = "relative";
     }
 
@@ -29,11 +30,11 @@ class Tooltip extends HTMLElement {
         this._tooltipContainer.style.position = "absolute";
         this._tooltipContainer.style.zIndex = 10;
         // To ensure that this refers to this class, we need to bind this when calling the `_showTooltip` method.
-        this.appendChild(this._tooltipContainer);
+        this.shadowRoot.appendChild(this._tooltipContainer);
     }
 
     _hideTooltiop() {
-        this.removeChild(this._tooltipContainer);
+        this.shadowRoot.removeChild(this._tooltipContainer);
     }
 }
 

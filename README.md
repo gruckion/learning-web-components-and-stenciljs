@@ -35,3 +35,9 @@ To create an element that can take in an attribute we just pass in the attribute
 # Adding styles to your web components
 
 We can add styles to HTMLElements within our web component using the `.styles` property. However global styles defined outside of our web component will override the css set through javascript. To avoid this global issue we need to make use of the shadow DOM. It would also be nice to avoid having to write html using the `createElement` attribute which can be done using templates.
+
+# Shadow DOM
+
+Currently all elements within our web component are visible within the DOM. We would like to hide the inner html of our web component and this is achieved using the shadow DOM. To do this we need to use `attachShadow(init: ShadowRootInit)`. Then we append our child elements to the shadowRoot of our component rather than directlyl to the HTMLElement. This is done by changing `this.appendChild` to `this.shadowRoot.appendChild`.
+
+Doing this has abstracted away the DOM of our web component however the content within the usage of our component has also vanished, namely the text. In order to bring this back we need to use trmplates.
