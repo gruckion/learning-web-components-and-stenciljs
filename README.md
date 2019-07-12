@@ -45,3 +45,9 @@ Doing this has abstracted away the DOM of our web component however the content 
 # Templates
 
 We can define a template within the DOM `<template></template>` and within this we can define the HTML we want to be displayed within our web component. The template element will not be render automatically. By applying an `id` attribute to it we can reference it from within our web component. This is done using the `document.querySelector()` by the id, we can then append the templates content to our shadowRoot making sure we use `cloneNode(true)` to do a deep copy to take all the nested DOM elements within the templates first element in the tree. We can then query select the shadowRoot to get the span HTMLElement to add our event listeners too.
+
+The draw backs of this approach is that we no longer have a self contained web component. We are also still loosing the inner elements within our web component, as it is still not rendered to the DOM.
+
+# Template slots
+
+We can add our text within the component back by using templates slots. The `<slot></slot>` element allows as to mark the location within our template where the inner conent of our web component should be place.
