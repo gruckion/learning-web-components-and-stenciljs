@@ -55,3 +55,7 @@ We can add our text within the component back by using templates slots. The `<sl
 # Defining Templates within the web component
 
 To have a self contained web component we would like to move our `<template></template>` to be within our web component. We can do this by setting the innerHTML of the shadowRoot within the constructor to be the content within the `<template>`.
+
+# Adding styles within our web component
+
+We can also now move out styles into the innerHTML of the shadowRoot which means we can delete our javascript css styles.
