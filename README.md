@@ -77,3 +77,5 @@ This presents a problem if you do want to style the content within the `<slot>` 
 We can style our element using `sr-tooltip {}` but if we want to have a default style defined within our web component we need to use `:host {}` as `sr-tooltip` is not defined within the web components `<style>` scope.
 
 If you want to conditionally apply default styling we can not use `:host.white {}` for example. We need to treat `:host()` as a function which takes in the additional class's as parameters. `:host(.red){}`
+
+If we want to conditionally style based on the parent element that our web component is placed withhin, then we must use the `:host-contxt(p) {}` selector. Here this will only apply to a parent container that is a paragraph.
