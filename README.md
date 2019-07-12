@@ -58,4 +58,4 @@ To have a self contained web component we would like to move our `<template></te
 
 # Adding styles within our web component
 
-We can also now move out styles into the innerHTML of the shadowRoot which means we can delete our javascript css styles.
+We can also now move out styles into the innerHTML of the shadowRoot which means we can delete our javascript css styles. Even if we style the div element directly we can see that the css does not leak out of our shadow DOM it is completely hidden away.
