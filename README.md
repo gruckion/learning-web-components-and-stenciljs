@@ -51,3 +51,7 @@ The draw backs of this approach is that we no longer have a self contained web c
 # Template slots
 
 We can add our text within the component back by using templates slots. The `<slot></slot>` element allows as to mark the location within our template where the inner conent of our web component should be place.
+
+# Defining Templates within the web component
+
+To have a self contained web component we would like to move our `<template></template>` to be within our web component. We can do this by setting the innerHTML of the shadowRoot within the constructor to be the content within the `<template>`.

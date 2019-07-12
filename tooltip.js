@@ -7,10 +7,18 @@ class Tooltip extends HTMLElement {
         this._tooltipContainer;
         this._tooltipText = "This is the default text if not set";
         this.attachShadow({ mode: "open" });
-        const template = document.querySelector("#tooltip-template");
-        // We can appendChild to the shadowRoot from the constructor but can not append to the main DOM until
-        // connectedCallback is called.
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
+
+        // We no longer want to have our template outside of our component.
+        // const template = document.querySelector("#tooltip-template");
+        // // We can appendChild to the shadowRoot from the constructor but can not append to the main DOM until
+        // // connectedCallback is called.
+        // this.shadowRoot.appendChild(template.content.cloneNode(true));
+
+        this.shadowRoot.innerHTML = `
+            <slot></slot>
+            <span>
+                (?)
+            </span>`;
     }
 
     connectedCallback() {
