@@ -59,3 +59,7 @@ To have a self contained web component we would like to move our `<template></te
 # Adding styles within our web component
 
 We can also now move out styles into the innerHTML of the shadowRoot which means we can delete our javascript css styles. Even if we style the div element directly we can see that the css does not leak out of our shadow DOM it is completely hidden away.
+
+# Creating new web components based on existing elements
+
+So far we have created a web component from the basic HTMLElement, but we can also set our starting point to be any othe HTMLElemnt, e.g. HTMLSpanElement, HTMLAnchorElement e.t.c. When we define our custom tag we must also add an object with an `extends` property which is set to a string for the tag we want to extend. This goes into the `define` function. `define(name: string, constructor: Function, options?:. ElementDefinitionOptions):` like so `customElements.define("sr-confirm-link", ConfirmLink, { extends: "a" });`. To display our element we still need the `<a>` element but we add an `is` attribute `<a is="sr-confirn-link" href="http://www.google.com">Google</a>`.
