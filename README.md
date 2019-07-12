@@ -26,4 +26,4 @@ Moving our element into the `connectedCallback()` fixes the error and allows us 
 
 # Event listeners
 
-We can add more logic to our component to detect the onHover event. We now have an event listener using `addEventListner` that will render a `div` when we hover over the "(?)". However each time we mouse enter it will produce a new `div` rather than revealing and hiding. For this functionality to work as intended we will need to add another event listener.
+We can add more logic to our component to detect the onHover event. We now have an event listener using `addEventListner` that will render a `div` when we hover over the "(?)". However each time we mouse enter it will produce a new `div` rather than revealing and hiding. For this functionality to work as intended we will need to add another event listener and use `removeChild` on our element.
