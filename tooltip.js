@@ -4,6 +4,13 @@ class Tooltip extends HTMLElement {
     constructor() {
         super();
         console.log("Created Tooltip element.");
+
+        // This will throw an error
+        // Uncaught DOMException: Failed to construct 'CustomElement': The result must not have children
+        const tooltipIcon = document.createElement("span");
+        tooltipIcon.textContent = "(?)";
+        this.appendChild(tooltipIcon);
+
     }
 }
 
