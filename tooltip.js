@@ -22,7 +22,13 @@ class Tooltip extends HTMLElement {
                     position: absolute;
                     z-index: 10;
                 }
-            </style
+                .highlight {
+                    background-color: red;
+                }
+                ::slotted(.highlight) {
+                    border-bottom: 5px dotted red;
+                }
+            </style>
             <slot>Default slot text</slot>
             <span>
                 (?)

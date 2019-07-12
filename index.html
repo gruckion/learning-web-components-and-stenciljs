@@ -11,13 +11,19 @@
       div {
         border: 2px orange solid;
       }
+      .highlight {
+        background-color: rgb(207, 147, 36);
+      }
     </style>
   </head>
 
   <body>
     <p>
-      <sr-tooltip text="Display text on hover">Web Components</sr-tooltip> are
-      awesome.
+      <sr-tooltip text="Display text on hover">
+        <span class="highlight">
+          Web Components
+        </span>
+      </sr-tooltip> are awesome.
 
       <br />
 
@@ -25,7 +31,9 @@
 
       <br />
 
-      <sr-tooltip>Default text tooltip</sr-tooltip>
+      <sr-tooltip>
+          Default text tooltip
+      </sr-tooltip>
 
       <br />
 
