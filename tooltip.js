@@ -18,11 +18,16 @@ class Tooltip extends HTMLElement {
         tooltipIcon.addEventListener("mouseenter", this._showTooltiop.bind(this));
         tooltipIcon.addEventListener("mouseleave", this._hideTooltiop.bind(this));
         this.appendChild(tooltipIcon);
+        this.style.position = "relative";
     }
 
     _showTooltiop() {
         this._tooltipContainer = document.createElement("div");
         this._tooltipContainer.textContent = this._tooltipText;
+        this._tooltipContainer.style.backgroundColor = "black";
+        this._tooltipContainer.style.color = "white";
+        this._tooltipContainer.style.position = "absolute";
+        this._tooltipContainer.style.zIndex = 10;
         // To ensure that this refers to this class, we need to bind this when calling the `_showTooltip` method.
         this.appendChild(this._tooltipContainer);
     }

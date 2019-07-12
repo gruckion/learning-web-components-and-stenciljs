@@ -31,3 +31,7 @@ We can add more logic to our component to detect the onHover event. We now have 
 # Using attributes on our web components
 
 To create an element that can take in an attribute we just pass in the attribute with the desire value e.g. `text="hello"`.We then use `getAttribute(s: string)` to get the text by the attribute as a string. To provide default text if it is not set, we can use the `hasAttribute(s: string)` to first check if the attribute has been provided. In the DOM our first element will render with custom text whilst the second tooltip will render with the default text.
+
+# Adding styles to your web components
+
+We can add styles to HTMLElements within our web component using the `.styles` property. However global styles defined outside of our web component will override the css set through javascript. To avoid this global issue we need to make use of the shadow DOM. It would also be nice to avoid having to write html using the `createElement` attribute which can be done using templates.
