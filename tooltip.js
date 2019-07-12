@@ -28,6 +28,9 @@ class Tooltip extends HTMLElement {
                 :host {
                     background-color: grey;
                 }
+                :host(.red) {
+                    background-color: red;
+                }
                 ::slotted(.highlight) {
                     border-bottom: 5px dotted red;
                 }
