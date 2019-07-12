@@ -41,3 +41,7 @@ We can add styles to HTMLElements within our web component using the `.styles` p
 Currently all elements within our web component are visible within the DOM. We would like to hide the inner html of our web component and this is achieved using the shadow DOM. To do this we need to use `attachShadow(init: ShadowRootInit)`. Then we append our child elements to the shadowRoot of our component rather than directlyl to the HTMLElement. This is done by changing `this.appendChild` to `this.shadowRoot.appendChild`.
 
 Doing this has abstracted away the DOM of our web component however the content within the usage of our component has also vanished, namely the text. In order to bring this back we need to use trmplates.
+
+# Templates
+
+We can define a template within the DOM `<template></template>` and within this we can define the HTML we want to be displayed within our web component. The template element will not be render automatically. By applying an `id` attribute to it we can reference it from within our web component. This is done using the `document.querySelector()` by the id, we can then append the templates content to our shadowRoot making sure we use `cloneNode(true)` to do a deep copy to take all the nested DOM elements within the templates first element in the tree. We can then query select the shadowRoot to get the span HTMLElement to add our event listeners too.
