@@ -5,9 +5,13 @@ class Tooltip extends HTMLElement {
         super();
         console.log("Created Tooltip element.");
         this._tooltipContainer;
+        this._tooltipText = "This is the default text if not set";
     }
 
     connectedCallback() {
+        if (this.hasAttribute("text")) {
+            this._tooltipText = this.getAttribute("text");
+        }
         const tooltipIcon = document.createElement("span");
         tooltipIcon.textContent = "(?)";
 
@@ -18,7 +22,7 @@ class Tooltip extends HTMLElement {
 
     _showTooltiop() {
         this._tooltipContainer = document.createElement("div");
-        this._tooltipContainer.textContent = "This is the tooltip text";
+        this._tooltipContainer.textContent = this._tooltipText;
         // To ensure that this refers to this class, we need to bind this when calling the `_showTooltip` method.
         this.appendChild(this._tooltipContainer);
     }
