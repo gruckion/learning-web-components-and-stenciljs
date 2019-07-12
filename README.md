@@ -21,3 +21,5 @@ Once the element has been mounted the `connectedCallback()` mehod will be called
 So this is the correct plaace to place DOM initialisations. There is also a `disconnectedCallback()` method that will be called by the browser whenever it is remove from the DOM.
 
 There is a third method `attributeChangedCallback()` this is used to moniter changes to the attributes (props) of our custom elements.
+
+Moving our element into the `connectedCallback()` fixes the error and allows us to render to the browser.
