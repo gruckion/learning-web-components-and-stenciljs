@@ -25,14 +25,22 @@ class Tooltip extends HTMLElement {
                 .highlight {
                     background-color: red;
                 }
+                :host {
+                    background-color: grey;
+                }
                 ::slotted(.highlight) {
                     border-bottom: 5px dotted red;
                 }
+                .icon {
+                    background-color: green;
+                    color: white;
+                    padding: 0.15rem 0.15rem;
+                    text-align: center;
+                    border-radius: 50%;
+                }
             </style>
             <slot>Default slot text</slot>
-            <span>
-                (?)
-            </span>`;
+            <span class="icon">(?)</span>`;
     }
 
     connectedCallback() {

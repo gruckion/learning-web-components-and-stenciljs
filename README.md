@@ -71,3 +71,7 @@ So far we have created a web component from the basic HTMLElement, but we can al
 It is important to realise that the content within a `<slot>` is defined within the light DOM and even through it is projected into the shadow DOM it iss contained within the light DOM and hence can be styled outside of the shadow DOM. Styles within the main website will effect the content within the `<slot>`
 
 This presents a problem if you do want to style the content within the `<slot>` from within your web component. We can style the slotted content using the pseudo selector `::slotted(span)`. However we can only select the top most element, not nested elements. It's also important to realise that the styles in the light DOM will override the shadow DOM for slotted or projected content.
+
+## Styling our web component overall from within the web component
+
+We can style our element using `sr-tooltip {}` but if we want to have a default style defined within our web component we need to use `:host {}` as `sr-tooltip` is not defined within the web components `<style>` scope.
