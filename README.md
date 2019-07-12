@@ -29,3 +29,5 @@ Moving our element into the `connectedCallback()` fixes the error and allows us 
 We can add more logic to our component to detect the onHover event. We now have an event listener using `addEventListner` that will render a `div` when we hover over the "(?)". However each time we mouse enter it will produce a new `div` rather than revealing and hiding. For this functionality to work as intended we will need to add another event listener and use `removeChild` on our element.
 
 # Using attributes on our web components
+
+To create an element that can take in an attribute we just pass in the attribute with the desire value e.g. `text="hello"`.We then use `getAttribute(s: string)` to get the text by the attribute as a string. To provide default text if it is not set, we can use the `hasAttribute(s: string)` to first check if the attribute has been provided. In the DOM our first element will render with custom text whilst the second tooltip will render with the default text.
