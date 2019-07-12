@@ -9,7 +9,16 @@ class Tooltip extends HTMLElement {
     connectedCallback() {
         const tooltipIcon = document.createElement("span");
         tooltipIcon.textContent = "(?)";
+
+        tooltipIcon.addEventListener("mouseenter", this._showTooltiop.bind(this));
         this.appendChild(tooltipIcon);
+    }
+
+    _showTooltiop() {
+        const tooltipContainer = document.createElement("div");
+        tooltipContainer.textContent = "This is the tooltip text";
+        // To ensure that this refers to this class, we need to bind this when calling the `_showTooltip` method.
+        this.appendChild(tooltipContainer);
     }
 }
 
