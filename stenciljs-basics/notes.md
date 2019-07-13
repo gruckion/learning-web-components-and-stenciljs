@@ -19,4 +19,8 @@ The annotation is placed above the `class`;
 export class SideDrawer {}
 ```
 
-In normal web components we can render our shadow DOM from the constructor or from the `connectedCallback()` method. In stencil we can use the render method.
+In normal web components we can render our shadow DOM from the constructor or from the `connectedCallback()` method. In stencil we can use the render method. Inside the render method we return JSX.
+
+## Styling a stencil component
+
+In order to connect our stencil component to styles we can point it to css file. Stencil also offers support for scss, with a little config.
