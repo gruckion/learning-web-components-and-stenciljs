@@ -31,6 +31,13 @@
   </body>
   <script>
     const modal = document.querySelector("sr-modal");
+    modal.addEventListener("confirm", () => {
+      console.log("Confirmed...");
+    });
+    modal.addEventListener("cancel", () => {
+      console.log("Cancelled...");
+    });
+
     const confirmButton = document.getElementById("confirm");
     confirmButton.addEventListener("click", () => {
       modal.open();

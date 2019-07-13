@@ -67,15 +67,23 @@ class Modal extends HTMLElement {
                     <slot name="main"></slot>
                 </section>
                 <section id="actions">
-                    <button>Cancel</button>
-                    <button>Okay</button>
+                    <button id="cancel-btn">Cancel</button>
+                    <button id="confirm-btn">Confirm</button>
                 </section>
             </div>
         `;
-        const slots = this.shadowRoot.querySelectorAll("slot");
-        slots[1].addEventListener("slotchange", event => {
-            console.dir(slots[1].assignedNodes());
-        });
+        const slots = this.shadowRoot.querySelectorAll( "slot" );
+        slots[ 1 ].addEventListener( "slotchange", event => {
+            console.dir( slots[ 1 ].assignedNodes() );
+        } );
+        const cancelButton = this.shadowRoot.getElementById( "cancel-btn" );
+        const confirmButton = this.shadowRoot.getElementById( "confirm-btn" );
+
+         cancelButton.addEventListener("click", this._cancel.bind(this));
+         confirmButton.addEventListener("click", this._confirm.bind(this));
+        //  cancelButton.addEventListener("cancel", () => {
+        //      console.log("cancel event.");
+        //  });
     }
 
     connectedCallback() {
@@ -93,16 +101,16 @@ class Modal extends HTMLElement {
 
         switch ( name ) {
             case "open":
-                this.isOpen = this.hasAttribute("open");
+                this.isOpen = this.hasAttribute( "open" );
                 break;
             default:
-                console.log("name: ", name);
+                console.log( "name: ", name );
                 break;
         }
     }
 
     static get observedAttributes() {
-        return [ ];
+        return [];
     }
 
     _render() {
@@ -110,8 +118,27 @@ class Modal extends HTMLElement {
     }
 
     open() {
-        this.setAttribute("open",  "");
+        this.setAttribute( "open", "" );
         this.isOpen = true;
+    }
+
+    hide() {
+        if ( this.hasAttribute( "open" ) ) {
+            this.removeAttribute( "open" );
+        }
+        this.isOpen = false;
+    }
+
+    _cancel(event) {
+        this.hide();
+        const cancelEvent = new Event("cancel", { bubbles: false, composed: true });
+        event.target.dispatchEvent(cancelEvent);
+    }
+
+    _confirm() {
+        this.hide();
+        const confirmEvent = new Event("confirm");
+        this.dispatchEvent(confirmEvent);
     }
 }
 customElements.define( "sr-modal", Modal );
