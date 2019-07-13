@@ -4,7 +4,7 @@ class Tooltip extends HTMLElement {
     constructor() {
         super();
         console.log("Created Tooltip element.");
-        this._tooltipContainer;
+        this._tooltipVisible;
         this.tooltipIcon;
         this._tooltipText = "This is the default text if not set";
         this.attachShadow({ mode: "open" });
@@ -58,6 +58,7 @@ class Tooltip extends HTMLElement {
         this.tooltipIcon.addEventListener("mouseenter", this._showTooltiop.bind(this));
         this.tooltipIcon.addEventListener("mouseleave", this._hideTooltiop.bind(this));
         this.style.position = "relative";
+        this._render();
     }
 
     disconnectedCallback() {
@@ -81,15 +82,29 @@ class Tooltip extends HTMLElement {
         return ["text"];
     }
 
+    _render() {
+        let tooltipContainer = this.shadowRoot.querySelector("div");
+        if (this._tooltipVisible === true) {
+            tooltipContainer = document.createElement("div");
+            tooltipContainer.textContent = this._tooltipText;
+            // To ensure that this refers to this class, we need to bind this when calling the `_showTooltip` method.
+            this.shadowRoot.appendChild(tooltipContainer);
+        } else {
+            if (tooltipContainer) {
+                this.shadowRoot.removeChild(tooltipContainer);
+            }
+        }
+
+    }
+
     _showTooltiop() {
-        this._tooltipContainer = document.createElement("div");
-        this._tooltipContainer.textContent = this._tooltipText;
-        // To ensure that this refers to this class, we need to bind this when calling the `_showTooltip` method.
-        this.shadowRoot.appendChild(this._tooltipContainer);
+        this._tooltipVisible = true;
+        this._render();
     }
 
     _hideTooltiop() {
-        this.shadowRoot.removeChild(this._tooltipContainer);
+        this._tooltipVisible = false;
+        this._render();
     }
 }
 

@@ -91,3 +91,7 @@ At the moment, if an attribute changes a run-time nothing will happen. In order 
 ## Clean up on disconnected
 
 When our element is removed from the DOM we will want to remove our event listeners. To do this we make use of the `disconnectedCallback` method.
+
+## Using a `_render` method
+
+Currently we have DOM content in both show and hide tooltip methods. It would be nicer if there was one method that dealt with rendering. We can do this by using our `_showTooltip` and `_hidetooltip` to only toggle the visible state and then trigger a render. For most components we will want to call `_render` in the `connectedCallback` to trigger the first render. This doesn't matter in the case of a tooltip as nothing is shown initially.
