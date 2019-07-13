@@ -24,6 +24,13 @@
     </sr-modal>
 
     <p>Please confirm your choice</p>
-    <button>Confirm</button>
+    <button id="confirm">Confirm</button>
   </body>
+  <script>
+    const modal = document.querySelector("sr-modal");
+    const confirmButton = document.getElementById("confirm");
+    confirmButton.addEventListener("click", () => {
+      modal.setAttribute("open", "");
+    });
+  </script>
 </html>

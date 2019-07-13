@@ -4,6 +4,10 @@ class Modal extends HTMLElement {
         this.attachShadow({ mode: "open" });
         this.shadowRoot.innerHTML = `
             <style>
+                .hidden {
+                    opacity: 0;
+                    pointer-events: none;
+                }
                 #backdrop {
                     position: fixed;
                     top: 0;
@@ -45,8 +49,8 @@ class Modal extends HTMLElement {
                     padding: 1rem;
                 }
             </style>
-            <div id="backdrop"></div>
-            <div id="modal">
+            <div id="backdrop" class="hidden"></div>
+            <div id="modal" class="hidden">
                 <header>
                     <h1>Please confirm</h1>
                 </header>
