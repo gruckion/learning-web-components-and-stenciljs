@@ -3,7 +3,6 @@
 class Tooltip extends HTMLElement {
     constructor() {
         super();
-        console.log("Created Tooltip element.");
         this._tooltipVisible;
         this.tooltipIcon;
         this._tooltipText = "This is the default text if not set";
@@ -28,6 +27,7 @@ class Tooltip extends HTMLElement {
                 }
                 :host {
                     background-color: var(--primary-color);
+                    position: relative;
                 }
                 :host(.red) {
                     background-color: red;
@@ -57,7 +57,6 @@ class Tooltip extends HTMLElement {
         this.tooltipIcon = this.shadowRoot.querySelector("span");
         this.tooltipIcon.addEventListener("mouseenter", this._showTooltiop.bind(this));
         this.tooltipIcon.addEventListener("mouseleave", this._hideTooltiop.bind(this));
-        this.style.position = "relative";
         this._render();
     }
 
