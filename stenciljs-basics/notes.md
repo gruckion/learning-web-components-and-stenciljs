@@ -36,3 +36,7 @@ We can use the `scoped` attribute to restrict our element to only apply apply th
     shadow: true
 })
 ```
+
+## Stencil attributes / props
+
+In stencil, we do not need to concer ourselves with listening to the attribute changed callback. We simply use the `@Prop()` decorator. By using `setTimeout` we can see that stencil automatically watches the `prop` and we can change it directly or by using `setAttribute`.

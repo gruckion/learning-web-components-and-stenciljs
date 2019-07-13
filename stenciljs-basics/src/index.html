@@ -12,6 +12,15 @@
     <script nomodule src="/build/stenciljs-basics.js"></script>
   </head>
   <body>
-    <sr-side-drawer></sr-side-drawer>
+    <sr-side-drawer id="side-drawer" headertitle="Main Menu"></sr-side-drawer>
+    <script>
+    const sideDrawer = document.getElementById("side-drawer");
+    setTimeout(() => {
+      sideDrawer.headertitle = "Change as prop";
+    }, 2000);
+    setTimeout(() => {
+      sideDrawer.setAttribute("headertitle", "change as attribute")
+    }, 4000);
+    </script>
   </body>
 </html>
