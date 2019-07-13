@@ -41,6 +41,9 @@ class Modal extends HTMLElement {
                 #actions button {
                     margin: 0 0.25rem;
                 }
+                #main {
+                    padding: 1rem;
+                }
             </style>
             <div id="backdrop"></div>
             <div id="modal">
