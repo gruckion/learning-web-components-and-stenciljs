@@ -100,5 +100,9 @@ class Modal extends HTMLElement {
     _render() {
 
     }
+
+    open() {
+        this.setAttribute("open",  "");
+    }
 }
 customElements.define( "sr-modal", Modal );
