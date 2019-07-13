@@ -5,6 +5,7 @@ class Tooltip extends HTMLElement {
         super();
         console.log("Created Tooltip element.");
         this._tooltipContainer;
+        this.tooltipIcon;
         this._tooltipText = "This is the default text if not set";
         this.attachShadow({ mode: "open" });
 
@@ -53,18 +54,18 @@ class Tooltip extends HTMLElement {
         if (this.hasAttribute("text")) {
             this._tooltipText = this.getAttribute("text");
         }
-        const tooltipIcon = this.shadowRoot.querySelector("span");
-
-        tooltipIcon.addEventListener("mouseenter", this._showTooltiop.bind(this));
-        tooltipIcon.addEventListener("mouseleave", this._hideTooltiop.bind(this));
-        this.shadowRoot.appendChild(tooltipIcon);
+        this.tooltipIcon = this.shadowRoot.querySelector("span");
+        this.tooltipIcon.addEventListener("mouseenter", this._showTooltiop.bind(this));
+        this.tooltipIcon.addEventListener("mouseleave", this._hideTooltiop.bind(this));
         this.style.position = "relative";
     }
 
+    disconnectedCallback() {
+        this.tooltipIcon.removeEventListener("mouseenter", this._showTooltiop);
+        this.tooltipIcon.removeEventListener("mouseleave", this._hideTooltiop);
+    }
+
     attributeChangedCallback(name, oldValue, newValue) {
-        console.log("name", name);
-        console.log("oldValue", oldValue);
-        console.log("newValue", newValue);
         if (oldValue === newValue) {
             return;
         }

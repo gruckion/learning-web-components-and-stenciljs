@@ -87,3 +87,7 @@ We can also specify the default style to be the value of css variables. These ca
 ## Dynamically changing attributes
 
 At the moment, if an attribute changes a run-time nothing will happen. In order for this we use the `attributeChangedCallback(name: string, oldValue: object, newValue: object)` and register the attribute to be watched. We can watch the attribute by listing it in an array returned by `static get observedAttributes()`. We can then change the value of the attribute when the `oldValue` is different for the new value and apply changes when attribute name `text` changes.
+
+## Clean up on disconnected
+
+When our element is removed from the DOM we will want to remove our event listeners. To do this we make use of the `disconnectedCallback` method.
