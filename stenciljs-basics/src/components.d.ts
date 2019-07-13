@@ -23,6 +23,7 @@ export namespace Components {
     */
     'middle': string;
   }
+  interface SrSideDrawer {}
 }
 
 declare global {
@@ -33,8 +34,15 @@ declare global {
     prototype: HTMLMyComponentElement;
     new (): HTMLMyComponentElement;
   };
+
+  interface HTMLSrSideDrawerElement extends Components.SrSideDrawer, HTMLStencilElement {}
+  var HTMLSrSideDrawerElement: {
+    prototype: HTMLSrSideDrawerElement;
+    new (): HTMLSrSideDrawerElement;
+  };
   interface HTMLElementTagNameMap {
     'my-component': HTMLMyComponentElement;
+    'sr-side-drawer': HTMLSrSideDrawerElement;
   }
 }
 
@@ -53,9 +61,11 @@ declare namespace LocalJSX {
     */
     'middle'?: string;
   }
+  interface SrSideDrawer extends JSXBase.HTMLAttributes<HTMLSrSideDrawerElement> {}
 
   interface IntrinsicElements {
     'my-component': MyComponent;
+    'sr-side-drawer': SrSideDrawer;
   }
 }
 
