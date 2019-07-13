@@ -1,6 +1,47 @@
 # The basics of web components
 
-- We can create autonmous elements
+## What are Web components
+
+They are your own custom html elements, for example
+
+```html
+<my-button text="Click me" />
+```
+
+Or an element that has it's own props and a slot which places child content in a specific position within the element.
+
+```html
+<my-modal open id="my-modal">
+    <h1 slot="title">Title</h1>
+    <p>Main body of text</p>
+</my-modal>
+```
+
+We can even interact with the elements and call functions defined within them. Similar to X
+
+```html
+<script>
+    const modal = document.getElementById("my-modal");
+    modal.open();
+</script>
+```
+
+## Web Component Specification
+
+There are only three specifications, there was a fourth for HTML imports that got dropped.
+
+Custom HTML Element | Shadow DOM          | Templates and Slots
+------------------- | ------------------- | -------------------
+Register your own HTML tags | Manage a seperate DOM node tree for your custom HTML with scoped CSS | Allows you to position dynamic content within your component
+
+## Why use them
+
+- Encapsulate logic and UI for re-use
+- Portable across projects that use different frameworks
+
+## Creating a web component
+
+- We can create autonomous elements
 - As well as extending built-in elements
 
 To create a custom element and actually render content we need to append a child element.
@@ -11,16 +52,16 @@ the HTMLElement using `document.appendChild(e: HTMLElement)`.
 This will cause an error which is due to a lack of consideration for the web components life cycle.
 `// Uncaught DOMException: Failed to construct 'CustomElement': The result must not have children`
 
-## Web Component Lifecycle
+## Web Component Life-cycle
 
 The first thing that gets call is the constructor, this is called when the element is created.
 However it is important to note that the moment when the element is created is not when it is actually attached to the DOM.
 It is first created in memory before being attached to the DOM, the element has not yet been added to the DOM when the constructor is being called. This is why trying to append an element that has not yet been added to the DOM will fail.
 
-Once the element has been mounted the `connectedCallback()` mehod will be called once your element has been attached to the DOM.
-So this is the correct plaace to place DOM initialisations. There is also a `disconnectedCallback()` method that will be called by the browser whenever it is remove from the DOM.
+Once the element has been mounted the `connectedCallback()` method will be called once your element has been attached to the DOM.
+So this is the correct place to place DOM initialisation. There is also a `disconnectedCallback()` method that will be called by the browser whenever it is remove from the DOM.
 
-There is a third method `attributeChangedCallback()` this is used to moniter changes to the attributes (props) of our custom elements.
+There is a third method `attributeChangedCallback()` this is used to monitor changes to the attributes (props) of our custom elements.
 
 Moving our element into the `connectedCallback()` fixes the error and allows us to render to the browser.
 
@@ -38,9 +79,9 @@ We can add styles to HTMLElements within our web component using the `.styles` p
 
 ## Shadow DOM
 
-Currently all elements within our web component are visible within the DOM. We would like to hide the inner html of our web component and this is achieved using the shadow DOM. To do this we need to use `attachShadow(init: ShadowRootInit)`. Then we append our child elements to the shadowRoot of our component rather than directlyl to the HTMLElement. This is done by changing `this.appendChild` to `this.shadowRoot.appendChild`.
+Currently all elements within our web component are visible within the DOM. We would like to hide the inner html of our web component and this is achieved using the shadow DOM. To do this we need to use `attachShadow(init: ShadowRootInit)`. Then we append our child elements to the shadowRoot of our component rather than directly to the HTMLElement. This is done by changing `this.appendChild` to `this.shadowRoot.appendChild`.
 
-Doing this has abstracted away the DOM of our web component however the content within the usage of our component has also vanished, namely the text. In order to bring this back we need to use trmplates.
+Doing this has abstracted away the DOM of our web component however the content within the usage of our component has also vanished, namely the text. In order to bring this back we need to use templates.
 
 ## Templates
 
@@ -78,7 +119,7 @@ We can style our element using `sr-tooltip {}` but if we want to have a default 
 
 If you want to conditionally apply default styling we can not use `:host.white {}` for example. We need to treat `:host()` as a function which takes in the additional class's as parameters. `:host(.red){}`
 
-If we want to conditionally style based on the parent element that our web component is placed withhin, then we must use the `:host-contxt(p) {}` selector. Here this will only apply to a parent container that is a paragraph.
+If we want to conditionally style based on the parent element that our web component is placed within, then we must use the `:host-contxt(p) {}` selector. Here this will only apply to a parent container that is a paragraph.
 
 ## Styling with css variables
 
