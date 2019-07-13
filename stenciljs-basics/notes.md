@@ -24,3 +24,15 @@ In normal web components we can render our shadow DOM from the constructor or fr
 ## Styling a stencil component
 
 In order to connect our stencil component to styles we can point it to css file. Stencil also offers support for scss, with a little config.
+
+## Scoping styles or using shadow DOM
+
+We can use the `scoped` attribute to restrict our element to only apply apply the styles to our component, this is done by prefixing all of our styles. This offers support for older platforms that do not implement the shadow DOM specification. However since stencil will automatically polyfil for older browsers we can still use the `shadow` attribute without loosing support for older browsers.
+
+```typescript
+@Component({
+    tag: "sr-side-drawer",
+    styleUrl: "./side-drawer.css",
+    shadow: true
+})
+```
