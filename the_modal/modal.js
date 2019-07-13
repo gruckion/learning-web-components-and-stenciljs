@@ -3,6 +3,8 @@ class Modal extends HTMLElement {
         super();
         this.attachShadow( { mode: "open" } );
         this.isOpen = false;
+        this._closeOnDimmerClick = false;
+        this.__backdrop = false;
         this.shadowRoot.innerHTML = `
             <style>
                 :host([open]) #backdrop {
@@ -82,9 +84,7 @@ class Modal extends HTMLElement {
         const confirmButton = this.shadowRoot.getElementById( "confirm-btn" );
         confirmButton.addEventListener("click", this._confirm.bind(this));
 
-        const backdrop = this.shadowRoot.getElementById( "backdrop" );
-        backdrop.addEventListener("click", this._cancel.bind(this));
-
+        this._manageCloseDimmerEvent();
     }
 
     connectedCallback() {
@@ -104,6 +104,10 @@ class Modal extends HTMLElement {
             case "open":
                 this.isOpen = this.hasAttribute( "open" );
                 break;
+            case "closeondimmerclick":
+                this._closeOnDimmerClick = this.hasAttribute("closeondimmerclick");
+                this._manageCloseDimmerEvent();
+                break;
             default:
                 console.log( "name: ", name );
                 break;
@@ -115,7 +119,20 @@ class Modal extends HTMLElement {
     }
 
     _render() {
+        //
+    }
 
+    _manageCloseDimmerEvent() {
+        this._backdrop = this.shadowRoot.getElementById( "backdrop" );
+        if (this._backdrop === false) {
+            return;
+        }
+
+        if (this._closeOnDimmerClick === true) {
+            _backdrop.addEventListener("click", this._cancel.bind(this));
+        } else {
+            this._backdrop.removeEventListener("click", this._cancel);
+        }
     }
 
     open() {
