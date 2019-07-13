@@ -1,12 +1,16 @@
 class Modal extends HTMLElement {
-    constructor() {
+    constructor () {
         super();
-        this.attachShadow({ mode: "open" });
+        this.attachShadow( { mode: "open" } );
         this.shadowRoot.innerHTML = `
             <style>
-                .hidden {
-                    opacity: 0;
-                    pointer-events: none;
+                :host([open]) #backdrop {
+                    opacity: 1;
+                    pointer-events: all;
+                }
+                :host([open]) #modal {
+                    opacity: 1;
+                    pointer-events: all;
                 }
                 #backdrop {
                     position: fixed;
@@ -16,6 +20,8 @@ class Modal extends HTMLElement {
                     height: 100vh;
                     background: rgba(0, 0, 0, 0.75);
                     z-index: 10;
+                    opacity: 0;
+                    pointer-events: none;
                 }
                 #modal {
                     display: flex;
@@ -29,6 +35,8 @@ class Modal extends HTMLElement {
                     background: white;
                     border-radius: 3px;
                     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+                    opacity: 0;
+                    pointer-events: none;
                 }
                 #actions {
                     border-top: 1px solid #ccc;
@@ -49,8 +57,8 @@ class Modal extends HTMLElement {
                     padding: 1rem;
                 }
             </style>
-            <div id="backdrop" class="hidden"></div>
-            <div id="modal" class="hidden">
+            <div id="backdrop"></div>
+            <div id="modal">
                 <header>
                     <h1>Please confirm</h1>
                 </header>
@@ -73,28 +81,24 @@ class Modal extends HTMLElement {
 
     }
 
-    attributeChangedCallback(name, newValue, oldValue) {
-        if (newValue === oldValue) {
+    attributeChangedCallback( name, newValue, oldValue ) {
+        if ( newValue === oldValue ) {
             return;
         }
 
-        console.log("name: ", name);
-        switch(name) {
-            case "open":
-                if (this.hasAttribute("open")) {
-                    this.shadowRoot.getElementById("backdrop").classList.remove("hidden");
-                    this.shadowRoot.getElementById("modal").classList.remove("hidden");
-                }
+        switch ( name ) {
+            default:
+                console.log("name: ", name);
                 break;
         }
     }
 
     static get observedAttributes() {
-        return ["open"];
+        return [ ];
     }
 
     _render() {
 
     }
 }
-customElements.define("sr-modal", Modal);
+customElements.define( "sr-modal", Modal );
