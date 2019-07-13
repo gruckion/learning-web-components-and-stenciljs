@@ -2,6 +2,7 @@ class Modal extends HTMLElement {
     constructor () {
         super();
         this.attachShadow( { mode: "open" } );
+        this.isOpen = false;
         this.shadowRoot.innerHTML = `
             <style>
                 :host([open]) #backdrop {
@@ -87,6 +88,9 @@ class Modal extends HTMLElement {
         }
 
         switch ( name ) {
+            case "open":
+                this.isOpen = this.hasAttribute("open");
+                break;
             default:
                 console.log("name: ", name);
                 break;
@@ -103,6 +107,7 @@ class Modal extends HTMLElement {
 
     open() {
         this.setAttribute("open",  "");
+        this.isOpen = true;
     }
 }
 customElements.define( "sr-modal", Modal );
