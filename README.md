@@ -83,3 +83,7 @@ If we want to conditionally style based on the parent element that our web compo
 ## Styling with css variables
 
 We can also specify the default style to be the value of css variables. These can be set in the light down allowing consumers to override the default styling.
+
+## Dynamically changing attributes
+
+At the moment, if an attribute changes a run-time nothing will happen. In order for this we use the `attributeChangedCallback(name: string, oldValue: object, newValue: object)` and register the attribute to be watched. We can watch the attribute by listing it in an array returned by `static get observedAttributes()`. We can then change the value of the attribute when the `oldValue` is different for the new value and apply changes when attribute name `text` changes.
