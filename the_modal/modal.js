@@ -74,11 +74,23 @@ class Modal extends HTMLElement {
     }
 
     attributeChangedCallback(name, newValue, oldValue) {
+        if (newValue === oldValue) {
+            return;
+        }
 
+        console.log("name: ", name);
+        switch(name) {
+            case "open":
+                if (this.hasAttribute("open")) {
+                    this.shadowRoot.getElementById("backdrop").classList.remove("hidden");
+                    this.shadowRoot.getElementById("modal").classList.remove("hidden");
+                }
+                break;
+        }
     }
 
-    static get observedAttribute() {
-        return [];
+    static get observedAttributes() {
+        return ["open"];
     }
 
     _render() {
