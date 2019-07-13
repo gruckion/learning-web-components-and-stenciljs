@@ -77,13 +77,14 @@ class Modal extends HTMLElement {
             console.dir( slots[ 1 ].assignedNodes() );
         } );
         const cancelButton = this.shadowRoot.getElementById( "cancel-btn" );
-        const confirmButton = this.shadowRoot.getElementById( "confirm-btn" );
+        cancelButton.addEventListener("click", this._cancel.bind(this));
 
-         cancelButton.addEventListener("click", this._cancel.bind(this));
-         confirmButton.addEventListener("click", this._confirm.bind(this));
-        //  cancelButton.addEventListener("cancel", () => {
-        //      console.log("cancel event.");
-        //  });
+        const confirmButton = this.shadowRoot.getElementById( "confirm-btn" );
+        confirmButton.addEventListener("click", this._confirm.bind(this));
+
+        const backdrop = this.shadowRoot.getElementById( "backdrop" );
+        backdrop.addEventListener("click", this._cancel.bind(this));
+
     }
 
     connectedCallback() {
