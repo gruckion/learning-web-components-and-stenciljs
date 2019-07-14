@@ -11,7 +11,6 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 export namespace Components {
   interface SrSideDrawer {
     'headertitle': string;
-    'open': boolean;
   }
 }
 
@@ -31,7 +30,6 @@ declare global {
 declare namespace LocalJSX {
   interface SrSideDrawer extends JSXBase.HTMLAttributes<HTMLSrSideDrawerElement> {
     'headertitle'?: string;
-    'open'?: boolean;
   }
 
   interface IntrinsicElements {

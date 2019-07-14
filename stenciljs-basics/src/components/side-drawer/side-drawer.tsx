@@ -8,10 +8,9 @@ import { Component, h, Prop } from "@stencil/core";
 export class SideDrawer {
 
   @Prop({ reflectToAttr: true }) headertitle: string;
-  @Prop({ reflectToAttr: true }) open: boolean;
 
   public render() {
-    return this.open === true && (
+    return (
       <aside class="side-drawer-aside">
         <header>
           <h1>{this.headertitle}</h1>
