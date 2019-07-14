@@ -8,6 +8,7 @@ import { Component, h, Prop } from "@stencil/core";
 export class SideDrawer {
 
   @Prop({ reflectToAttr: true }) headertitle: string;
+  @Prop({ reflectToAttr: true }) open: boolean;
 
   public render() {
     return (
