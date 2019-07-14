@@ -2,7 +2,7 @@ import { Component, h, Prop } from "@stencil/core";
 
 @Component({
   tag: "sr-side-drawer",
-  styleUrl: "./side-drawer.css",
+  styleUrl: "./side-drawer.scss",
   shadow: true
 })
 export class SideDrawer {
@@ -23,6 +23,10 @@ export class SideDrawer {
           <h1>{this.headertitle}</h1>
           <button onClick={this._onCloseDrawer}>X</button>
         </header>
+        <section class="tabs">
+          <button class="active">Navigation</button>
+          <button>Contacts</button>
+        </section>
         <main>
           <slot />
         </main>
