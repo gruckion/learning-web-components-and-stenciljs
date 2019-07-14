@@ -40,3 +40,14 @@ We can use the `scoped` attribute to restrict our element to only apply apply th
 ## Stencil attributes / props
 
 In stencil, we do not need to concer ourselves with listening to the attribute changed callback. We simply use the `@Prop()` decorator. By using `setTimeout` we can see that stencil automatically watches the `prop` and we can change it directly or by using `setAttribute`.
+
+Note if we change the attribute using;
+
+```javascript
+const sideDrawer = document.getElementById("side-drawer");
+setTimeout(() => {
+  sideDrawer.headertitle = "Change as prop";
+}, 2000);
+```
+
+The attribute does not change in the HTML DOM. Only if we use `setAttribute` will this change reflect correctly. We can however reflect the change this change by adding a property to the `@Prop()` decorator. This is done inside a javascript object where we set `{ reflectToAttr: true` to true. This will now ensure that the attribute is also updated when we change the prop directly.
