@@ -14,6 +14,7 @@ export namespace Components {
     'open': () => Promise<void>;
     'opened': boolean;
   }
+  interface SrStockPrice {}
 }
 
 declare global {
@@ -24,8 +25,15 @@ declare global {
     prototype: HTMLSrSideDrawerElement;
     new (): HTMLSrSideDrawerElement;
   };
+
+  interface HTMLSrStockPriceElement extends Components.SrStockPrice, HTMLStencilElement {}
+  var HTMLSrStockPriceElement: {
+    prototype: HTMLSrStockPriceElement;
+    new (): HTMLSrStockPriceElement;
+  };
   interface HTMLElementTagNameMap {
     'sr-side-drawer': HTMLSrSideDrawerElement;
+    'sr-stock-price': HTMLSrStockPriceElement;
   }
 }
 
@@ -34,9 +42,11 @@ declare namespace LocalJSX {
     'headertitle'?: string;
     'opened'?: boolean;
   }
+  interface SrStockPrice extends JSXBase.HTMLAttributes<HTMLSrStockPriceElement> {}
 
   interface IntrinsicElements {
     'sr-side-drawer': SrSideDrawer;
+    'sr-stock-price': SrStockPrice;
   }
 }
 

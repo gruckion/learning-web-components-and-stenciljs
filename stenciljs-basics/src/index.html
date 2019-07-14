@@ -9,42 +9,14 @@
     body {
       font-family: sans-serif;
     }
-
-    .side-nav ul {
-      list-style: none;
-    }
-
-    .side-nav li {
-      margin: 1rem 0;
-    }
-
-    .side-nav a {
-      text-decoration: none;
-      color: black;
-    }
   </style>
   <script type="module" src="/build/stenciljs-basics.esm.js"></script>
   <script nomodule src="/build/stenciljs-basics.js"></script>
 </head>
 
 <body>
-  <button id="side-draw-btn">Open</button>
-  <sr-side-drawer id="side-drawer" headertitle="Main Menu">
-    <nav class="side-nav">
-      <ul>
-        <li><a href="/">Hi</a></li>
-      </ul>
-    </nav>
-  </sr-side-drawer>
+  <sr-stock-price></sr-stock-price>
   <script>
-    const sideDrawButton = document.getElementById("side-draw-btn");
-    const sideDrawer = document.getElementById("side-drawer");
-
-    sideDrawButton.addEventListener("click", () => {
-      if (!sideDrawer.opened) {
-        sideDrawer.open();
-      }
-    });
   </script>
 </body>
 
