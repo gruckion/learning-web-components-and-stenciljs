@@ -51,3 +51,7 @@ setTimeout(() => {
 ```
 
 The attribute does not change in the HTML DOM. Only if we use `setAttribute` will this change reflect correctly. We can however reflect the change this change by adding a property to the `@Prop()` decorator. This is done inside a javascript object where we set `{ reflectToAttr: true` to true. This will now ensure that the attribute is also updated when we change the prop directly.
+
+## Slots in stencil
+
+We can get content into our component through the use of slots, but we can also use slots. These work the same as vanilla javascript slots. But again it is not possible to style the inner content from our web component. In order to style the nested content we need to apply these styles within the light DOM.

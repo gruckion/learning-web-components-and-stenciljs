@@ -7,20 +7,37 @@
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
     />
     <title>Stencil Component Starter</title>
-
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      .side-nav ul {
+        list-style: none;
+      }
+      .side-nav li {
+        margin: 1rem 0;
+      }
+      .side-nav a {
+        text-decoration: none;
+        color: black;
+      }
+    </style>
     <script type="module" src="/build/stenciljs-basics.esm.js"></script>
     <script nomodule src="/build/stenciljs-basics.js"></script>
   </head>
   <body>
-    <sr-side-drawer id="side-drawer" headertitle="Main Menu"></sr-side-drawer>
+    <sr-side-drawer id="side-drawer" headertitle="Main Menu">
+      <nav class="side-nav">
+        <ul>
+          <li><a href="/">Hi</a></li>
+        </ul>
+      </nav>
+    </sr-side-drawer>
     <script>
     const sideDrawer = document.getElementById("side-drawer");
     setTimeout(() => {
       sideDrawer.headertitle = "Change as prop";
     }, 2000);
-    setTimeout(() => {
-      sideDrawer.setAttribute("headertitle", "change as attribute")
-    }, 4000);
     </script>
   </body>
 </html>
