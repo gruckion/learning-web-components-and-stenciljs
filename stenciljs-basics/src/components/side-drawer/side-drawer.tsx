@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h, Prop, State } from "@stencil/core";
 
 @Component({
   tag: "sr-side-drawer",
@@ -11,28 +11,31 @@ export class SideDrawer {
     this._onCloseDrawer.bind(this);
   }
 
+  @State() showContactInfo: boolean = false;
   @Prop({ reflectToAttr: true }) headertitle: string;
   @Prop({ reflectToAttr: true, mutable: true }) open: boolean;
 
   private _onCloseDrawer = () => this.open = false;
 
   private _onContentChange = (content: string) => {
-    console.log("content:", content);
+    this.showContactInfo = (content === "contact");
   };
 
   public render() {
     let content = (<slot />);
 
-    content = (
-      <div id="contact-information">
-        <h2>Contact Information</h2>
-        <p>You can reach us via phone and email</p>
-        <ul>
-          <li>Phone: <a href="tel: 07501 999 999">07501 999 999</a></li>
-          <li>Email: <a href="mailto: something@somethig.com">something@something.com</a></li>
-        </ul>
-      </div>
-    );
+    if (this.showContactInfo === true) {
+      content = (
+        <div id="contact-information">
+          <h2>Contact Information</h2>
+          <p>You can reach us via phone and email</p>
+          <ul>
+            <li>Phone: <a href="tel: 07501 999 999">07501 999 999</a></li>
+            <li>Email: <a href="mailto: something@somethig.com">something@something.com</a></li>
+          </ul>
+        </div>
+      );
+    }
 
     return (
       <aside class="side-drawer-aside">
@@ -43,13 +46,14 @@ export class SideDrawer {
         <section class="tabs">
           <button
             id="navigation-btn"
-            class="active"
+            class={!this.showContactInfo && "active"}
             onClick={this._onContentChange.bind(this, "navigation")}
           >
             Navigation
           </button>
           <button
             id="contact-btn"
+            class={this.showContactInfo && "active"}
             onClick={this._onContentChange.bind(this, "contact")}
           >
             Contacts

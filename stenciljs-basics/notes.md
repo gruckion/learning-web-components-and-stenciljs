@@ -59,3 +59,7 @@ We can get content into our component through the use of slots, but we can also 
 ## Immutable props by default
 
 In stencil we can use props and change them from the HTML, however if we try to set them from within our stencil component we will get a warning. Props in stencil are immutable by default. This is by design to impose a unidirectional data flow into the component. To enable `mutable` props, we simply add the mutable property to the `@Prop({ })` decorator object.
+
+## State in stencil
+
+If we want to manage state within our component it is possible to use `@Prop()` with immutable, but if we only want to manage the state from within our component and not expose it. Then we will need to use the `@Statr()` decorator. Stencil will automatically render the content when state changes occur.
