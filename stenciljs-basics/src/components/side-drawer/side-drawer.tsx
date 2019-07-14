@@ -42,7 +42,8 @@ export class SideDrawer {
       );
     }
 
-    return (
+    return [
+      <div class="backdrop" />,
       <aside class="side-drawer-aside">
         <header>
           <h1>{this.headertitle}</h1>
@@ -55,19 +56,19 @@ export class SideDrawer {
             onClick={this._onContentChange.bind(this, "navigation")}
           >
             Navigation
-          </button>
+        </button>
           <button
             id="contact-btn"
             class={this.showContactInfo && "active"}
             onClick={this._onContentChange.bind(this, "contact")}
           >
             Contacts
-          </button>
+        </button>
         </section>
         <main>
           {content}
         </main>
       </aside>
-    );
+    ];
   }
 }

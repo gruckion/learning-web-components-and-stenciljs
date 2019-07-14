@@ -67,3 +67,7 @@ If we want to manage state within our component it is possible to use `@Prop()` 
 ## Stencil public methods
 
 To define a function within our component that can be called through javascript, we must use the `@Method()` decorator.
+
+## Returning multiple elements
+
+We cannot use jsx fragments but instead we can return an array of elements.
