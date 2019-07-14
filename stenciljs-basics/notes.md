@@ -63,3 +63,7 @@ In stencil we can use props and change them from the HTML, however if we try to 
 ## State in stencil
 
 If we want to manage state within our component it is possible to use `@Prop()` with immutable, but if we only want to manage the state from within our component and not expose it. Then we will need to use the `@Statr()` decorator. Stencil will automatically render the content when state changes occur.
+
+## Stencil public methods
+
+To define a function within our component that can be called through javascript, we must use the `@Method()` decorator.

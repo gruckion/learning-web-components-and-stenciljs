@@ -67,6 +67,6 @@
 
 }
 
-:host([open]) .side-drawer-aside {
+:host([opened]) .side-drawer-aside {
   left: 0;
 }
