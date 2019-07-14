@@ -55,3 +55,7 @@ The attribute does not change in the HTML DOM. Only if we use `setAttribute` wil
 ## Slots in stencil
 
 We can get content into our component through the use of slots, but we can also use slots. These work the same as vanilla javascript slots. But again it is not possible to style the inner content from our web component. In order to style the nested content we need to apply these styles within the light DOM.
+
+## Immutable props by default
+
+In stencil we can use props and change them from the HTML, however if we try to set them from within our stencil component we will get a warning. Props in stencil are immutable by default. This is by design to impose a unidirectional data flow into the component. To enable `mutable` props, we simply add the mutable property to the `@Prop({ })` decorator object.
